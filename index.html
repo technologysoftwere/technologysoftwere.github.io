@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BD24 Technology Center</title>
+
+<meta name="description" content="BD24 Technology Center - Tools, Software and Useful Websites">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#070b14;
+    --bg2:#0d1320;
+    --card:#111827;
+    --card2:#151e2e;
+    --border:#263247;
+    --text:#f5f7fb;
+    --muted:#8d99ad;
+    --primary:#6366f1;
+    --primary2:#8b5cf6;
+    --danger:#ef4444;
+    --success:#22c55e;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:
+        radial-gradient(circle at top left,rgba(99,102,241,.13),transparent 35%),
+        radial-gradient(circle at top right,rgba(139,92,246,.10),transparent 30%),
+        var(--bg);
+    color:var(--text);
+    min-height:100vh;
+}
+
+button,
+input,
+select,
+textarea{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.container{
+    width:min(1250px,94%);
+    margin:auto;
+}
+
+/* HEADER */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(7,11,20,.88);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.nav{
+    min-height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logoIcon{
+    width:44px;
+    height:44px;
+    border-radius:14px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
+    font-size:22px;
+    box-shadow:0 8px 25px rgba(99,102,241,.35);
+}
+
+.logoText{
+    font-size:20px;
+    font-weight:800;
+}
+
+.logoText span{
+    display:block;
+    color:var(--muted);
+    font-size:11px;
+    font-weight:500;
+    margin-top:3px;
+}
+
+.navActions{
+    display:flex;
+    gap:8px;
+}
+
+.btn{
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    padding:10px 14px;
+    border-radius:10px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-1px);
+    border-color:#46536d;
+}
+
+.btn.primary{
+    border:0;
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
+}
+
+/* HERO */
+
+.hero{
+    padding:55px 0 35px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:clamp(32px,5vw,58px);
+    line-height:1.05;
+    margin-bottom:16px;
+    background:linear-gradient(135deg,#fff,#9da8bd);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    color:var(--muted);
+    max-width:700px;
+    margin:auto;
+    line-height:1.7;
+}
+
+/* SEARCH */
+
+.searchBox{
+    margin:28px auto 22px;
+    max-width:720px;
+    position:relative;
+}
+
+.searchBox input{
+    width:100%;
+    padding:17px 20px 17px 52px;
+    border-radius:15px;
+    border:1px solid var(--border);
+    background:rgba(17,24,39,.85);
+    color:white;
+    outline:none;
+    font-size:15px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.searchBox input:focus{
+    border-color:var(--primary);
+}
+
+.searchIcon{
+    position:absolute;
+    left:18px;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:20px;
+}
+
+/* CATEGORIES */
+
+.categories{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding:5px 0 20px;
+    scrollbar-width:none;
+}
+
+.categories::-webkit-scrollbar{
+    display:none;
+}
+
+.cat{
+    white-space:nowrap;
+    padding:10px 15px;
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--muted);
+    border-radius:999px;
+    font-weight:700;
+}
+
+.cat.active{
+    color:white;
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
+    border-color:transparent;
+}
+
+/* TOOLBAR */
+
+.toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin:10px 0 20px;
+}
+
+.resultInfo{
+    color:var(--muted);
+    font-size:14px;
+}
+
+.toolbarButtons{
+    display:flex;
+    gap:8px;
+}
+
+/* GRID */
+
+.toolsGrid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    padding-bottom:70px;
+}
+
+/* CARD */
+
+.toolCard{
+    position:relative;
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.035),transparent),
+        var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:20px;
+    min-height:215px;
+    transition:.25s;
+    box-shadow:0 8px 30px rgba(0,0,0,.16);
+    cursor:grab;
+}
+
+.toolCard:hover{
+    transform:translateY(-5px);
+    border-color:#3b4860;
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
+
+.toolCard.dragging{
+    opacity:.35;
+    transform:scale(.98);
+}
+
+.toolCard.dragOver{
+    border-color:var(--primary);
+    box-shadow:0 0 0 2px rgba(99,102,241,.2);
+}
+
+.cardTop{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.toolIcon{
+    width:52px;
+    height:52px;
+    border-radius:15px;
+    display:grid;
+    place-items:center;
+    background:rgba(99,102,241,.12);
+    border:1px solid rgba(99,102,241,.15);
+    font-size:26px;
+}
+
+.badge{
+    height:max-content;
+    padding:5px 8px;
+    border-radius:7px;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:.5px;
+    background:rgba(34,197,94,.12);
+    color:#66e99a;
+}
+
+.toolCard h3{
+    margin:17px 0 7px;
+    font-size:18px;
+}
+
+.description{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.6;
+    min-height:42px;
+}
+
+.categoryText{
+    margin-top:12px;
+    color:#7f8ca3;
+    font-size:11px;
+}
+
+.cardBottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    margin-top:17px;
+}
+
+.position{
+    color:#66748c;
+    font-size:11px;
+    font-weight:700;
+}
+
+.openBtn{
+    border:0;
+    text-decoration:none;
+    color:white;
+    padding:9px 13px;
+    border-radius:9px;
+    font-size:12px;
+    font-weight:800;
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
+}
+
+/* EMPTY */
+
+.empty{
+    grid-column:1/-1;
+    text-align:center;
+    padding:70px 20px;
+    color:var(--muted);
+}
+
+/* LOADING */
+
+.loading{
+    grid-column:1/-1;
+    text-align:center;
+    padding:70px;
+    color:var(--muted);
+}
+
+.spinner{
+    width:34px;
+    height:34px;
+    border:3px solid #293449;
+    border-top-color:var(--primary);
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+    margin:0 auto 15px;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid var(--border);
+    padding:30px 0;
+    text-align:center;
+    color:#66748c;
+    font-size:12px;
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%) translateY(100px);
+    background:#111827;
+    border:1px solid var(--border);
+    color:white;
+    padding:13px 18px;
+    border-radius:12px;
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+    z-index:1000;
+    opacity:0;
+    transition:.3s;
+    font-size:13px;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .toolsGrid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:650px){
+
+    .nav{
+        min-height:68px;
+    }
+
+    .logoText{
+        font-size:16px;
+    }
+
+    .logoIcon{
+        width:40px;
+        height:40px;
+    }
+
+    .navActions .btn span{
+        display:none;
+    }
+
+    .hero{
+        padding:40px 0 25px;
+    }
+
+    .toolsGrid{
+        grid-template-columns:1fr;
+    }
+
+    .toolbar{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .toolbarButtons{
+        width:100%;
+    }
+
+    .toolbarButtons .btn{
+        flex:1;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+    <div class="logo">
+
+        <div class="logoIcon">
+            ⚡
+        </div>
+
+        <div class="logoText">
+            BD24 Technology Center
+            <span>Tools & Software Portal</span>
+        </div>
+
+    </div>
+
+    <div class="navActions">
+
+        <button class="btn" onclick="resetTools()">
+            🔄 <span>Reset</span>
+        </button>
+
+    </div>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+<section class="hero">
+
+    <h1>
+        All Your Tools in One Place
+    </h1>
+
+    <p>
+        Quickly access your software, online tools,
+        SEO services, AI tools and useful websites
+        from one professional dashboard.
+    </p>
+
+    <div class="searchBox">
+
+        <div class="searchIcon">
+            🔍
+        </div>
+
+        <input
+            id="searchInput"
+            type="text"
+            placeholder="Search tools..."
+            oninput="renderTools()"
+        >
+
+    </div>
+
+</section>
+
+
+<div id="categories" class="categories"></div>
+
+
+<div class="toolbar">
+
+    <div id="resultInfo" class="resultInfo">
+        Loading...
+    </div>
+
+    <div class="toolbarButtons">
+
+        <button
+            class="btn"
+            onclick="saveOrder()">
+            💾 <span>Save Position</span>
+        </button>
+
+    </div>
+
+</div>
+
+
+<div id="toolsGrid" class="toolsGrid">
+
+    <div class="loading">
+
+        <div class="spinner"></div>
+
+        Loading tools...
+
+    </div>
+
+</div>
+
+</main>
+
+
+<footer>
+
+    © 2026 BD24 Technology Center
+    <br><br>
+    Tools & Software Portal
+
+</footer>
+
+
+<div id="toast" class="toast"></div>
+
+
+<script>
+
+/* =========================================================
+   YOUR TOOLS
+   ========================================================= */
+
+const defaultTools = [
+
+    {
+        id:"pdfmake",
+        name:"PDF Make",
+        category:"My Tools",
+        icon:"📄",
+        url:"https://mysoftwere.github.io/pdfmake/",
+        description:"Create and generate PDF files.",
+        badge:"NEW"
+    },
+
+    {
+        id:"oldpdfmake",
+        name:"Old PDF Make",
+        category:"My Tools",
+        icon:"📄",
+        url:"https://mysoftwere.github.io/oldpdfmake/",
+        description:"PDF generation tool.",
+        badge:""
+    },
+
+    {
+        id:"pdftotitel",
+        name:"PDF To Title",
+        category:"My Tools",
+        icon:"📝",
+        url:"https://mysoftwere.github.io/pdftotitel/",
+        description:"Convert PDF information into title format.",
+        badge:""
+    },
+
+    {
+        id:"htmlmake",
+        name:"HTML Make",
+        category:"My Tools",
+        icon:"🌐",
+        url:"https://mysoftwere.github.io/htmlmake/",
+        description:"Create and generate HTML.",
+        badge:"NEW"
+    },
+
+    {
+        id:"bulkurlconverter",
+        name:"Bulk URL Converter",
+        category:"My Tools",
+        icon:"🔗",
+        url:"https://mysoftwere.github.io/bulkurlconverter/",
+        description:"Convert multiple URLs at once.",
+        badge:""
+    },
+
+    {
+        id:"sitemap",
+        name:"Sitemap",
+        category:"My Tools",
+        icon:"🗺️",
+        url:"https://mysoftwere.github.io/sitemap/",
+        description:"Sitemap related tool.",
+        badge:""
+    },
+
+    {
+        id:"link2f",
+        name:"Link2F",
+        category:"My Tools",
+        icon:"🔗",
+        url:"https://mysoftwere.github.io/link2f/",
+        description:"Link processing tool.",
+        badge:""
+    },
+
+    {
+        id:"htmlnewmake",
+        name:"HTML New Make",
+        category:"My Tools",
+        icon:"💻",
+        url:"https://mysoftwere.github.io/htmlnewmake/",
+        description:"New HTML generation tool.",
+        badge:""
+    },
+
+    {
+        id:"titelchtml",
+        name:"Title To HTML",
+        category:"My Tools",
+        icon:"🏷️",
+        url:"https://mysoftwere.github.io/titelchtml/",
+        description:"Create HTML from title.",
+        badge:""
+    },
+
+    {
+        id:"base64",
+        name:"Base64 Encode",
+        category:"Online Tools",
+        icon:"🔐",
+        url:"https://www.base64encode.org/",
+        description:"Encode and decode Base64 data.",
+        badge:"POPULAR"
+    },
+
+    {
+        id:"mailmeteor",
+        name:"Mailmeteor",
+        category:"Online Tools",
+        icon:"✉️",
+        url:"https://mailmeteor.com/",
+        description:"Email productivity tools.",
+        badge:""
+    },
+
+    {
+        id:"mohmal",
+        name:"Mohmal",
+        category:"Online Tools",
+        icon:"📬",
+        url:"https://www.mohmal.com/en/inbox",
+        description:"Temporary email inbox.",
+        badge:""
+    },
+
+    {
+        id:"crawlme",
+        name:"CrawlMe",
+        category:"SEO",
+        icon:"🕷️",
+        url:"https://crawlme.net/",
+        description:"Website crawling and indexing tools.",
+        badge:""
+    },
+
+    {
+        id:"gooindex",
+        name:"GooIndex",
+        category:"SEO",
+        icon:"🔎",
+        url:"https://gooindex.com/",
+        description:"Indexing related service.",
+        badge:""
+    },
+
+    {
+        id:"rocketindexer",
+        name:"Rocket Indexer",
+        category:"SEO",
+        icon:"🚀",
+        url:"https://rocketindexer.com/",
+        description:"URL indexing service.",
+        badge:"POPULAR"
+    },
+
+    {
+        id:"imdb",
+        name:"IMDb",
+        category:"Entertainment",
+        icon:"🎬",
+        url:"https://www.imdb.com/",
+        description:"Movies, TV shows and entertainment information.",
+        badge:""
+    },
+
+    {
+        id:"espn",
+        name:"ESPN",
+        category:"Sports",
+        icon:"🏆",
+        url:"https://www.espn.in/",
+        description:"Sports news and scores.",
+        badge:""
+    },
+
+    {
+        id:"googletrends",
+        name:"Google Trends",
+        category:"Web",
+        icon:"📈",
+        url:"https://trends.google.com/trends/",
+        description:"Explore search trends.",
+        badge:"POPULAR"
+    },
+
+    {
+        id:"chatgpt",
+        name:"ChatGPT",
+        category:"AI",
+        icon:"🤖",
+        url:"https://chatgpt.com/",
+        description:"AI assistant and productivity tool.",
+        badge:"AI"
+    },
+
+    {
+        id:"wpcnt",
+        name:"WPCNT",
+        category:"Web",
+        icon:"🌐",
+        url:"https://www.wpcnt.com/",
+        description:"Web publishing related service.",
+        badge:""
+    },
+
+    {
+        id:"govirallink",
+        name:"Go Viral Link",
+        category:"Web",
+        icon:"🔥",
+        url:"https://blog.govirallink.com/",
+        description:"Viral link and publishing tools.",
+        badge:""
+    }
+
+];
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+let tools = [];
+
+let activeCategory = "All";
+
+let draggedIndex = null;
+
+
+/* =========================================================
+   LOAD
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadTools();
+
+    }
+);
+
+
+/* =========================================================
+   LOAD TOOLS FROM LOCAL STORAGE
+   ========================================================= */
+
+function loadTools(){
+
+    const saved =
+        localStorage.getItem(
+            "bd24_tools"
+        );
+
+
+    if(saved){
+
+        try{
+
+            tools =
+                JSON.parse(saved);
+
+        }catch(error){
+
+            tools =
+                copyDefaultTools();
+
+        }
+
+    }else{
+
+        tools =
+            copyDefaultTools();
+
+    }
+
+
+    renderCategories();
+
+    renderTools();
+
+}
+
+
+/* =========================================================
+   COPY DEFAULT
+   ========================================================= */
+
+function copyDefaultTools(){
+
+    return JSON.parse(
+        JSON.stringify(
+            defaultTools
+        )
+    );
+
+}
+
+
+/* =========================================================
+   CATEGORIES
+   ========================================================= */
+
+function getCategories(){
+
+    return [
+        "All",
+        ...new Set(
+            tools
+            .map(tool => tool.category)
+            .filter(Boolean)
+        )
+    ];
+
+}
+
+
+function renderCategories(){
+
+    const box =
+        document.getElementById(
+            "categories"
+        );
+
+
+    box.innerHTML =
+        getCategories()
+        .map(function(category){
+
+            return `
+
+                <button
+                    class="cat ${
+                        category === activeCategory
+                        ? "active"
+                        : ""
+                    }"
+                    onclick='setCategory(${JSON.stringify(category)})'>
+
+                    ${escapeHtml(category)}
+
+                </button>
+
+            `;
+
+        })
+        .join("");
+
+}
+
+
+function setCategory(category){
+
+    activeCategory =
+        category;
+
+    renderCategories();
+
+    renderTools();
+
+}
+
+
+/* =========================================================
+   RENDER
+   ========================================================= */
+
+function renderTools(){
+
+    const grid =
+        document.getElementById(
+            "toolsGrid"
+        );
+
+
+    const search =
+        document.getElementById(
+            "searchInput"
+        )
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    const filtered =
+        tools.filter(function(tool){
+
+            const categoryMatch =
+                activeCategory === "All" ||
+                tool.category === activeCategory;
+
+
+            const text =
+                (
+                    tool.name +
+                    " " +
+                    tool.description +
+                    " " +
+                    tool.category
+                ).toLowerCase();
+
+
+            const searchMatch =
+                !search ||
+                text.includes(search);
+
+
+            return (
+                categoryMatch &&
+                searchMatch
+            );
+
+        });
+
+
+    document.getElementById(
+        "resultInfo"
+    ).textContent =
+        `${filtered.length} tools`;
+
+
+    if(!filtered.length){
+
+        grid.innerHTML = `
+
+            <div class="empty">
+
+                <div style="font-size:50px">
+                    🔎
+                </div>
+
+                <h3 style="margin-top:15px">
+                    No tools found
+                </h3>
+
+                <p style="margin-top:8px">
+                    Try another search.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    grid.innerHTML =
+        filtered.map(function(tool){
+
+            const originalIndex =
+                tools.findIndex(
+                    item =>
+                        item.id === tool.id
+                );
+
+
+            return createCard(
+                tool,
+                originalIndex
+            );
+
+        }).join("");
+
+
+    attachDragDrop();
+
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+function createCard(tool,index){
+
+    return `
+
+        <article
+            class="toolCard"
+            draggable="true"
+            data-index="${index}">
+
+            <div class="cardTop">
+
+                <div class="toolIcon">
+
+                    ${escapeHtml(
+                        tool.icon || "🔧"
+                    )}
+
+                </div>
+
+
+                ${
+                    tool.badge
+                    ?
+                    `<div class="badge">
+                        ${escapeHtml(tool.badge)}
+                    </div>`
+                    :
+                    ""
+                }
+
+            </div>
+
+
+            <h3>
+                ${escapeHtml(tool.name)}
+            </h3>
+
+
+            <div class="description">
+
+                ${escapeHtml(
+                    tool.description
+                )}
+
+            </div>
+
+
+            <div class="categoryText">
+
+                ${escapeHtml(
+                    tool.category
+                )}
+
+            </div>
+
+
+            <div class="cardBottom">
+
+                <div class="position">
+
+                    Position #${index + 1}
+
+                </div>
+
+
+                <a
+                    class="openBtn"
+                    href="${escapeAttribute(tool.url)}"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    Open ↗
+
+                </a>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+/* =========================================================
+   DRAG AND DROP
+   ========================================================= */
+
+function attachDragDrop(){
+
+    const cards =
+        document.querySelectorAll(
+            ".toolCard"
+        );
+
+
+    cards.forEach(function(card){
+
+        card.addEventListener(
+            "dragstart",
+            function(){
+
+                draggedIndex =
+                    Number(
+                        card.dataset.index
+                    );
+
+                card.classList.add(
+                    "dragging"
+                );
+
+            }
+        );
+
+
+        card.addEventListener(
+            "dragend",
+            function(){
+
+                card.classList.remove(
+                    "dragging"
+                );
+
+                cards.forEach(function(c){
+
+                    c.classList.remove(
+                        "dragOver"
+                    );
+
+                });
+
+            }
+        );
+
+
+        card.addEventListener(
+            "dragover",
+            function(event){
+
+                event.preventDefault();
+
+                card.classList.add(
+                    "dragOver"
+                );
+
+            }
+        );
+
+
+        card.addEventListener(
+            "dragleave",
+            function(){
+
+                card.classList.remove(
+                    "dragOver"
+                );
+
+            }
+        );
+
+
+        card.addEventListener(
+            "drop",
+            function(event){
+
+                event.preventDefault();
+
+                card.classList.remove(
+                    "dragOver"
+                );
+
+
+                const targetIndex =
+                    Number(
+                        card.dataset.index
+                    );
+
+
+                if(
+                    draggedIndex === null ||
+                    draggedIndex === targetIndex
+                ){
+
+                    return;
+
+                }
+
+
+                const moved =
+                    tools.splice(
+                        draggedIndex,
+                        1
+                    )[0];
+
+
+                tools.splice(
+                    targetIndex,
+                    0,
+                    moved
+                );
+
+
+                draggedIndex =
+                    null;
+
+
+                saveLocal();
+
+                renderTools();
+
+
+                showToast(
+                    "Position changed. Click Save Position.",
+                    "success"
+                );
+
+            }
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   SAVE LOCAL
+   ========================================================= */
+
+function saveLocal(){
+
+    localStorage.setItem(
+        "bd24_tools",
+        JSON.stringify(tools)
+    );
+
+}
+
+
+/* =========================================================
+   SAVE POSITION
+   ========================================================= */
+
+function saveOrder(){
+
+    saveLocal();
+
+    showToast(
+        "Position saved on this browser.",
+        "success"
+    );
+
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+function resetTools(){
+
+    const confirmReset =
+        confirm(
+            "Reset all tools to the original order?"
+        );
+
+
+    if(!confirmReset){
+
+        return;
+
+    }
+
+
+    tools =
+        copyDefaultTools();
+
+
+    activeCategory =
+        "All";
+
+
+    saveLocal();
+
+    renderCategories();
+
+    renderTools();
+
+
+    showToast(
+        "Original order restored.",
+        "success"
+    );
+
+}
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+function showToast(
+    message,
+    type="success"
+){
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.textContent =
+        message;
+
+
+    toast.className =
+        "toast show";
+
+
+    clearTimeout(
+        window.toastTimer
+    );
+
+
+    window.toastTimer =
+        setTimeout(function(){
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },3000);
+
+}
+
+
+/* =========================================================
+   ESCAPE
+   ========================================================= */
+
+function escapeHtml(value){
+
+    return String(value ?? "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+}
+
+
+function escapeAttribute(value){
+
+    return escapeHtml(value);
+
+}
+
+</script>
+
+</body>
+</html>
